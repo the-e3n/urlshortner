@@ -25,7 +25,7 @@ SECRET_KEY = 'npm5mc8ntczjn0wzf9i^@^i=gebgw_^(!c=etuaija+=12(%18'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
