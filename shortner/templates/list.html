@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url Shortner</title>
+</head>
+<body>
+    <h1>List:</h1>
+    {% if list|length == 0 %}
+    <h1>No URLs Found to Display</h1>
+    {% else %}
+    {% for item in list %}
+    Your Url: <a href="/go/{{item.slug}}">{{item.slug}}</a>
+    <form action="/list/" method="post">
+        {% csrf_token %}
+    <input type="hidden" name="slug" value={{item.slug}}>
+    <input type="submit" value="Delete">
+    </form>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>
