@@ -16,13 +16,13 @@ def index2(request):
     return redirect('/create')
 
 def create(request):
-    base_url = request.META['REMOTE_ADDR']
+    base_url = request.META['SERVER_NAME']
     base_scheme = request.scheme
     if request.method == 'POST':
         _url = request.POST.get('url')
         if Urls.objects.filter(url=_url):
             url = Urls.objects.filter(url=_url)[0]
-            complete_url = f'{base_scheme}://{base_url}:8000/go/{url.slug}' 
+            complete_url = f'{base_scheme}://{base_url}/go/{url.slug}' 
             print(complete_url,'.........................')
             return HttpResponse(f'Your Url is : <a href={complete_url} target=_blank>{complete_url}</a>' )
         else:
@@ -30,7 +30,7 @@ def create(request):
             db_url.slug = generate('abcdefghijklmnopqrstuvwxyz1234567890',5)
             db_url.url = request.POST.get('url')
             db_url.save()
-            complete_url = f'{base_scheme}://{base_url}:8000/go/{db_url.slug}'
+            complete_url = f'{base_scheme}://{base_url}/go/{db_url.slug}'
             return HttpResponse(f'Your Url is : <a href={complete_url} target=_blank>{complete_url}</a>' )
     else:
         return render(request,'index.html')
