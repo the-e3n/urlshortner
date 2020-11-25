@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Url Shortner</title>
+    <style>
+        .center{
+            text-align: center;
+            text-justify: auto;
+            margin: 20px;
+        }
+
+    </style>
 </head>
 <body>
-    <form action="/create/" method="POST">
+    <div class="center"><h1>Url Shortner</h1>
+    Options
+    <a href="/list">List All Urls</a>
+    
+    
+    </div>
+    <form class="center" action="/create/" method="POST">
         {% csrf_token %}
         <input type="url" name="url" id="url">
         <input type="submit" value="Short">

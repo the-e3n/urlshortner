@@ -6,10 +6,14 @@ def index(request,_url):
     if Urls.objects.get(slug=_url):
         url = Urls.objects.get(slug=_url)
         print(url.slug)
+        url.views = url.views + 1
+        url.save()
         return redirect (url.url)
     else:
         return redirect('/create')
 
+def index2(request):
+    return redirect('/create')
 
 def create(request):
     base_url = request.META['REMOTE_ADDR']
@@ -40,6 +44,7 @@ def list_short(request):
     else:
         url_list = Urls.objects.all()
         context['list'] = url_list
+        
         return render(request,'list.html',context)
 
             
