@@ -43,36 +43,21 @@
         </div>
     </nav>
     <div class="center block-heading"><h1>Url Shortner</h1>
-    Options
-    <!-- <a href="/list">List All Urls</a> -->
     </div>
-    <!-- <form class="center" action="/create/" method="POST">
-        {% csrf_token %}
-        <label for="url">Enter Your Url Here</label>
-        <br>
-        <input type="url" name="url" id="url" required="true" placeholder="URL">
-        <br>
-        <label for="myslug">Enter Your Custom Trailing url Here</label>
-        <br>
-        <input type="text" name="myslug" id="slug" placeholder="URL after /(*not required)">
-        <br>
-        <input type="submit" value="Short It!">
     
-    
-    </form> -->
-        <div class="container text-center col-4 ">
+    <div class="container text-center">
+    {% if status == '1' %}
+    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    {% elif status == '2'%}
+    <h2>This URL <a href={{url}} target=_blank>{{url}}</a> already exists with name: {{myslug}}</h2>
+    {% elif status == '3' %}
+    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    {% elif status == '4' %}
+    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    {% endif %}
+    </div>
 
-            <form action="/create/" method="POST">
-                {% csrf_token %}
-                <label for="url">Destination URL</label>
-                <input type="url" class="form-control" name="url" aria-describedby="urlHelp">
-                <small id="urlHelp" class="form-text text-muted">The long Url to make it short.</small> 
-                <label for="myslug">Enter Your Desired Output Short Url </label>
-                <input type="text" class="form-control" name="myslug" aria-describedby="myslugHelp">
-                <small id="myslugHelp" class="form-text text-muted">The Short URL you want to aceess the long url</small>
-                <button type="submit" class="btn btn-outline-primary">Make It Short</button>
-            </form>
-    </div>
+
     <footer class="footer bg-dark mt-auto p-4">
         <!-- Copyright -->
         <div class=" container footer-copyright text-center p-1 text-light ">© 2020 Copyright:

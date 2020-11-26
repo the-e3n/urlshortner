@@ -1,24 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Url Shortner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
+
 <body>
-    <h1>List:</h1>
-    {% if list|length == 0 %}
-    <h1>No URLs Found to Display</h1>
-    {% else %}
-    {% for item in list %}
-    <form action="/list/" method="post">
-    Your Url: <a href="/{{item.slug}}">{{item.slug}}</a>
-        {% csrf_token %}
-    Views: {{item.views}}
-    <input type="hidden" name="slug" value={{item.slug}}>
-    <input type="submit" value="Delete">
-    </form>
-    {% endfor %}
-    {% endif %}
+    <nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-dark clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="/">Online Bit</a><button data-toggle="collapse"
+                class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Create New Links</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/list">List All Active Links</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="block-heading text-center m-4">
+        <h1>All Short URLS</h1>
+    </div>
+
+    <table class="table">
+        <form action="/list/" method="post">
+        <thead>
+            <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Long Url</th>
+                <th scope="col">Short Url</th>
+                <th scope="col">Views</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if list|length == 0 %}
+            <tr>
+                <th scope="row">0</th>
+                <td>Not Found</td>
+                <td>Not Found</td>
+                <td>Not Found</td>
+            </tr>
+            {% else %}
+            {% for item in list %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href={{item.url}}>{{item.url|slice:40}}</td>
+                <td><a href="/{{item.slug}}">{{server}}{{item.slug}}</td>
+                <td>{{item.views}}</td>
+                <td>
+                        {% csrf_token %}
+                        <input type="hidden" name="slug" value={{item.slug}} id="slug">
+                        <input class="btn btn-outline-danger" type="submit" value="Delete">
+                    
+                </td>
+            </tr>
+
+
+            {% endfor %}
+            {% endif %}
+        </form>
+        </tbody>
+    </table>
+
+    <!-- Footer -->
+    <footer class="footer font-small bg-dark p-4">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center p-1 text-light ">© 2020 Copyright:
+            <a class="text-light" href={{server}} style="display: inline-block;"> Onlinebit.Tech</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
 </body>
+
 </html>
