@@ -12,7 +12,7 @@
     {% else %}
     {% for item in list %}
     <form action="/list/" method="post">
-    Your Url: <a href="/go/{{item.slug}}">{{item.slug}}</a>
+    Your Url: <a href="/{{item.slug}}">{{item.slug}}</a>
         {% csrf_token %}
     Views: {{item.views}}
     <input type="hidden" name="slug" value={{item.slug}}>
