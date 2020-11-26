@@ -1,0 +1,19 @@
+{
+
+  "name": "E3N-Url-Shortner",
+
+  "description": "Django Based Url Shortner",
+
+  "repository": "https://github.com/the-e3n/urlshortner",
+
+  "keywords": ["python", "django", "automation"],
+
+  "builpacks": [
+
+    { "url": "heroku/python" },
+
+
+  ]
+
+}
+
