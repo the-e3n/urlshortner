@@ -1,19 +1,14 @@
 {
 
   "name": "urlshortner",
-
   "description": "Django Based Url Shortner",
-
   "repository": "https://github.com/the-e3n/urlshortner",
-
-  "keywords": ["python", "django", "automation"],
-
   "builpacks": [
     { "url": "heroku/python" }
                ],
   "env" : "SERVER":{
                      "description":"Url of your app",
-                     "value":"https://yourapp.herokuapp.com"
+                     "value":"https://yourapp.herokuapp.com/"
                    },
 }
 
