@@ -11,10 +11,10 @@ def index(request,_url=None):
         url.save()
         return redirect (url.url)
     else:
-        return redirect('/create')
+        return redirect('/create/')
 
 def index2(request):
-    return redirect('/create')
+    return redirect('/create/')
 
 def create(request):
     context= {}
