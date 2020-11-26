@@ -26,8 +26,9 @@ def create(request):
             complete_url = f'{base_url}{url.slug}' 
             print(complete_url,'.........................')
             # return HttpResponse(f'Your Url is : <a href={complete_url} target=_blank>{complete_url}</a>' )
-            context['url'] = complete_url
+            context['url'] = url.slug
             context['status'] = '1'
+            context['server'] = base_url
             return render(request,'created.html', context)
         else:
             if request.POST.get('myslug'):
@@ -40,6 +41,7 @@ def create(request):
                     context['url'] = complete_url
                     context['myslug'] = url.slug
                     context['status'] = '2'
+                    context['server'] = base_url
                     return render(request,'created.html', context)
                 else:
                     db_url = Urls()
@@ -48,9 +50,10 @@ def create(request):
                     db_url.save()
                     complete_url = f'{base_url}{db_url.slug}'
                     # return HttpResponse(f'Your Url is : <a href={complete_url} target=_blank>{complete_url}</a>' )    
-                    context['url'] = complete_url
+                    context['url'] = db_url.slug
                     context['myslug'] = db_url.slug
                     context['status'] = '3'
+                    context['server'] = base_url
                     return render(request,'created.html', context)
             else:
                 db_url = Urls()
@@ -58,8 +61,9 @@ def create(request):
                 db_url.url = request.POST.get('url')
                 db_url.save()
                 complete_url = f'{base_url}{db_url.slug}'
-                context['url'] = complete_url
+                context['url'] = db_url.slug
                 ontext['status'] = '4'
+                context['server'] = base_url
                 return render(request,'created.html', context)
                 # return HttpResponse(f'Your Url is : <a href={complete_url} target=_blank>{complete_url}</a>' )
     else:

@@ -47,13 +47,13 @@
     
     <div class="container text-center">
     {% if status == '1' %}
-    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    <h2>Your Url is : <a href=/{{url}} target=_blank>{{server}}{{url}}</a></h2>
     {% elif status == '2'%}
-    <h2>This URL <a href={{url}} target=_blank>{{url}}</a> already exists with name: {{myslug}}</h2>
+    <h2>This URL <a href={{url}} target=_blank>{{server}}{{url}}</a> already exists with name: {{myslug}}</h2>
     {% elif status == '3' %}
-    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    <h2>Your Url is : <a href=/{{url}} target=_blank>{{server}}{{url}}</a></h2>
     {% elif status == '4' %}
-    <h2>Your Url is : <a href={{url}} target=_blank>{{url}}</a></h2>
+    <h2>Your Url is : <a href=/{{url}} target=_blank>{{server}}{{url}}</a></h2>
     {% endif %}
     </div>
 
