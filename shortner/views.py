@@ -3,7 +3,7 @@ from nanoid import generate
 from .models import Urls
 import os
 # Create your views here.
-def index(request,_url):
+def index(request,_url=None):
     if Urls.objects.get(slug=_url):
         url = Urls.objects.get(slug=_url)
         print(url.slug)
