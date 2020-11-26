@@ -1,6 +1,6 @@
 {
 
-  "name": "E3N-Url-Shortner",
+  "name": "urlshortner",
 
   "description": "Django Based Url Shortner",
 
@@ -9,11 +9,13 @@
   "keywords": ["python", "django", "automation"],
 
   "builpacks": [
-
-    { "url": "heroku/python" },
-
-
-  ]
-
+    { "url": "heroku/python" }
+               ]
+  "env" : {
+           "SERVER":{
+                     "generator":"https://yourapp.herokuapp.com",
+                      "description":"Url of your app"
+                    }
+          }
 }
 
