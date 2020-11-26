@@ -20,7 +20,7 @@ from shortner.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('create/', create),
-    path('list', list),
+    path('list/', list),
     path('', include('shortner.urls')),
 
 ]
