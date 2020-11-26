@@ -11,11 +11,9 @@
   "builpacks": [
     { "url": "heroku/python" }
                ]
-  "env": {
-           "SERVER":{
+  "env" : "SERVER":{
                      "generator":"https://yourapp.herokuapp.com",
                       "description":"Url of your app"
-                    },
-          }
+                   },
 }
 
