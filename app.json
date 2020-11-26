@@ -12,7 +12,7 @@
     { "url": "heroku/python" }
                ]
   "env" : "SERVER":{
-                     "generator":"https://yourapp.herokuapp.com",
+                     "value":"https://yourapp.herokuapp.com",
                       "description":"Url of your app"
                    },
 }
