@@ -6,9 +6,11 @@
   "builpacks": [
     { "url": "heroku/python" }
                ],
-  "env" : "SERVER":{
+  "env" : {
+           "SERVER":{
                      "description":"Url of your app",
                      "value":"https://yourapp.herokuapp.com/"
-                   },
+                    },
+          },
 }
 
