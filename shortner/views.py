@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from nanoid import generate
 from .models import Urls
+import os
 # Create your views here.
 def index(request,_url):
     if Urls.objects.get(slug=_url):
@@ -16,7 +17,7 @@ def index2(request):
     return redirect('/create')
 
 def create(request):
-    base_url = request.META['SERVER_NAME']
+    base_url = os.environ['SERVER']
     base_scheme = request.scheme
     if request.method == 'POST':
         _url = request.POST.get('url')
